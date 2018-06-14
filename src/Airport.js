@@ -12,3 +12,14 @@ Airport.prototype.planes = function(){
 Airport.prototype.clearForLanding = function(plane) {
   this._hangar.push(plane);
 };
+
+Airport.prototype.clearForTakeoff = function(plane) {
+  if (this.isStormy()){
+    throw new Error('takeoff not authorized due to stormy weather');
+  }
+  this._hangar = [];
+};
+
+Airport.prototype.isStormy = function () {
+  return false;
+};
